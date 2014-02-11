@@ -71,6 +71,20 @@ Data::DigestPath makes the path as digest hash.
 
 the object constructor
 
+=head3 %options
+
+=over
+
+=item C<< salt => $string // '' >>
+
+=item C<< depth => $integer // 4 >>
+
+=item C<< delim => $string // '/' >>
+
+=item C<< digest => $code_ref // sub { Digest::MD5::md5_hex(@_) } >>
+
+=back
+
 =head2 make_path($key)
 
 generate the path
