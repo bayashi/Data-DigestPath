@@ -24,12 +24,16 @@ sub new {
 }
 
 sub make_path {
-    my ($self, $key) = @_;
+    my ($self, $key, $length) = @_;
 
     $key = '' unless defined $key;
 
     my $hash = $self->digest->($self->salt . $key);
-    my $path = join $self->delim, (split '', $hash)[ 0 .. $self->depth - 1 ], $hash;
+    my $path = join(
+        $self->delim,
+        (split '', $hash)[ 0 .. $self->depth - 1 ],
+        $length ? substr($hash, 0, $length) : $hash
+    );
 
     return $path;
 }
@@ -85,9 +89,17 @@ the object constructor
 
 =back
 
-=head2 make_path($key)
+=head2 make_path($key[, $length])
 
 generate the path
+
+=over
+
+=item C<< $key => $string // '' >>
+
+=item C<< $length => $file_length // full length >>
+
+=back
 
 
 =head1 REPOSITORY
