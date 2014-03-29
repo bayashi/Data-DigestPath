@@ -57,15 +57,16 @@ Data::DigestPath - the path generator as digest hash
 
 There are all options.
 
-    use Data::DigestPath
+    use Digest::SHA1 qw//;
+    use Data::DigestPath;
 
     my $dp = Data::DigestPath->new(
         salt   => 'bar',
-        depth  => 4,
-        delim  => '/',
+        depth  => 2,
+        delim  => '-',
         digest => sub { Digest::SHA1::sha1_hex(@_) },
     );
-    warn $dp->make_path
+    warn $dp->make_path('baz'); # 3-2-32b1bf1853e6c39e4a1c3dae941ab7094ff1d293
 
 
 =head1 DESCRIPTION
