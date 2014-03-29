@@ -53,7 +53,7 @@ Data::DigestPath - the path generator as digest hash
 
 =head1 SYNOPSIS
 
-    use Data::DigestPath
+    use Data::DigestPath;
 
     my $dp   = Data::DigestPath->new;
     my $path = $dp->make_path('foo'); # a/c/b/d/acbd18db4cc2f85cedef654fccc4a4d8
